@@ -6,7 +6,14 @@ RSpec.describe "User logs out of current account" do
                 email: "jake@adventuretime.com",
                 password: "dog")
 
-    visit user_path(user)
+    visit '/'
+
+    click_link 'Login'
+
+    fill_in "session[email]", with: "jake@adventuretime.com"
+    fill_in "session[password]", with: "dog"
+
+    click_on 'Login'
 
     click_link 'Logout'
 
