@@ -1,0 +1,12 @@
+<h1>Categories Index</h1>
+
+<% @categories.each do |category| %>
+  <div class="category">
+    <div class="link">
+      <%= link_to category.name, category_path(category) %>
+    </div>
+    <div class="delete">
+      <%= link_to "Delete", category_path(category), method: :delete if current_user.admin? %>
+    </div>
+  </div>
+<% end %>
