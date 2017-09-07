@@ -1,3 +1,5 @@
 <%= flash[:success] %>
 
 <p>Welcome, <%= @user.name %>!</p>
+
+<%= link_to 'Logout', logout_path, method: :delete %>
