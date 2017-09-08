@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "User visits category#new" do
+RSpec.describe "User visits categories#new" do
   context "as admin" do
     it "they can create categories" do
       admin = User.create(name: "Princess Bubblegum",
