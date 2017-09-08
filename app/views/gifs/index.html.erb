@@ -1,0 +1,7 @@
+<h1>View all the Gifs!</h1>
+
+<% @gifs.each do |gif| %>
+  <div class="gif">
+    <%= image_tag(gif.image_path) %>
+  </div>
+<% end %>
