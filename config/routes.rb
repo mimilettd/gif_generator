@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   post 'login', to: "sessions#create"
 
   namespace :admin do
-    resources :categories, only: [:new]
+    resources :categories, only: [:new, :create]
   end
 
   resources :categories, only: [:index, :show, :destroy]

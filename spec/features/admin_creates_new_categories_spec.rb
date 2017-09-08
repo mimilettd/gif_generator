@@ -12,6 +12,13 @@ RSpec.describe "User visits category#new" do
 
       visit new_admin_category_path
       expect(page).to have_content("Create a New Category")
+
+      fill_in "category[name]", with: "Cats"
+      click_button "Create Category"
+
+      expect(current_path).to eq(categories_path)
+      expect(page).to have_content("Category successfully created!")
+      expect(page).to have_link("#{Category.last.name}")
     end
   end
   context "as user" do
