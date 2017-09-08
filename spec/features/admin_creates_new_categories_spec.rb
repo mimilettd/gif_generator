@@ -20,6 +20,24 @@ RSpec.describe "User visits category#new" do
       expect(page).to have_content("Category successfully created!")
       expect(page).to have_link("#{Category.last.name}")
     end
+    it "cannot create a category if name already exists" do
+      Category.create(name: "Cats")
+
+      admin = User.create(name: "Princess Bubblegum",
+                          email: "bubbglegum@adventuretime.com",
+                          password: "candy",
+                          role: 1)
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+      visit new_admin_category_path
+      expect(page).to have_content("Create a New Category")
+
+      fill_in "category[name]", with: "Cats"
+      click_button "Create Category"
+
+      expect(page).to have_content("has already been taken")
+    end
   end
   context "as user" do
     it "they cannot access categories#new" do
