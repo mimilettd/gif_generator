@@ -17,6 +17,11 @@ RSpec.feature "User visits gifs#new" do
 
       expect(current_path).to eq(new_admin_gif_path)
       expect(page).to have_content("Generate Gifs")
+
+      fill_in "Search", with: "cat"
+      click_on "Generate GIF"
+      
+      expect(current_path).to eq(gifs_path)
     end
   end
   context "as user" do
@@ -29,7 +34,6 @@ RSpec.feature "User visits gifs#new" do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
       visit '/'
-      save_and_open_page
 
       expect(page).to_not have_content("Generate Gifs")
     end
