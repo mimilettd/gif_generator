@@ -20,7 +20,7 @@ RSpec.feature "User visits gifs#index" do
       first(:link, "Favorite").click
     end
 
-    expect(current_path).to eq(user_favorites_path(user))
+    expect(current_path).to eq(user_gifs_path(user))
     expect(page).to have_css("img[src=\"#{gif.image_path}\"]")
   end
 end
