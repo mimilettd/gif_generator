@@ -7,11 +7,11 @@ class User < ApplicationRecord
 
   enum role: %w(default admin)
 
-  def favorite_gif(gif)
-    favorites << gif
+  def favorite(gif)
+    gifs << gif
   end
 
-  def unfavorite_gif(gif)
-    favorites.delete(gif)
+  def unfavorite(gif)
+    gifs.delete(gif)
   end
 end

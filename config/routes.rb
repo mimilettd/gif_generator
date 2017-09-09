@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root to: "main#index"
 
   resources :users, only: [:new, :create, :show] do
-    resources :gifs, only: [:index, :create, :show]
+    resources :gifs, only: [:index, :create, :destroy]
   end
 
   delete 'logout', to: "sessions#destroy"

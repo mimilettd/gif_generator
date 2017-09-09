@@ -1,21 +1,24 @@
 class GifsController < ApplicationController
   def index
     if params[:user_id]
-      user = User.find(params[:user_id])
-      @gifs = user.gifs
+      @user = User.find(params[:user_id])
+      @gifs = @user.gifs
     else
       @gifs = Gif.all
     end
   end
 
   def create
-    favorite = Favorite.new(user_id: params["user_id"], gif_id: params["gif_id"])
-    user = favorite.user
-    if favorite.save
-      redirect_to user_gifs_path(user)
-    else
-      flash[:warning] = "You've already favorited this gif!"
-      redirect_to gifs_index
-    end
+    user = User.find(params[:user_id])
+    gif = Gif.find(params["gif_id"])
+    user.favorite(gif)
+    redirect_to user_gifs_path
+  end
+
+  def destroy
+    user = User.find(params[:user_id])
+    gif = Gif.find(params[:id])
+    user.unfavorite(gif)
+    redirect_to user_gifs_path(user)
   end
 end
