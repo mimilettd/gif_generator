@@ -14,6 +14,7 @@ class GifsController < ApplicationController
     if favorite.save
       redirect_to user_gifs_path(user)
     else
+      flash[:warning] = "You've already favorited this gif!"
       redirect_to gifs_index
     end
   end
