@@ -20,7 +20,7 @@ RSpec.feature "User visits gifs#new" do
 
       fill_in "Search", with: "cat"
       click_on "Generate GIF"
-      
+
       expect(current_path).to eq(gifs_path)
     end
   end

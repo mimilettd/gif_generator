@@ -3,5 +3,6 @@
 <% @gifs.each do |gif| %>
   <div class="gif">
     <%= image_tag(gif.image_path) %>
+    <%= link_to 'Favorite', user_gifs_path(gif), method: :post %>
   </div>
 <% end %>
