@@ -26,16 +26,18 @@ RSpec.feature "User visits gifs#new" do
   end
   context "as user" do
     it "they cannot see link to generate gifs" do
-      user = User.create(name: "Princess Bubblegum",
-                         email: "bubbglegum@adventuretime.com",
-                         password: "candy",
-                         role: 0)
-
-      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+      user
 
       visit '/'
 
       expect(page).to_not have_content("Generate Gifs")
+    end
+    it "they cannot access page even with link" do
+      user
+
+      visit new_admin_gif_path
+
+      expect(page).to have_content("The page you were looking for doesn't exist.")
     end
   end
 end

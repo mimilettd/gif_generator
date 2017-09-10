@@ -4,7 +4,7 @@ RSpec.feature "User visits gifs#index" do
   it "and can see all the gifs" do
     cat = Category.create(name: "cat")
     dog = Category.create(name: "dog")
-    
+
     gif_1 = cat.gifs.create(search_term: "cat", image_path: "https://media3.giphy.com/media/vFKqnCdLPNOKc/200.gif")
     gif_2 = cat.gifs.create(search_term: "cat", image_path: "https://media3.giphy.com/media/1XG6PDYJbI4w0/giphy.gif")
     gif_3 = dog.gifs.create(search_term: "dog", image_path: "https://media2.giphy.com/media/3o7aCPVTaKjiYIPvsk/200.gif")

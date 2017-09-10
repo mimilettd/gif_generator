@@ -22,4 +22,12 @@ module Helpers
       @user.favorite(gif)
     end
   end
+  def user
+    @user = User.create(name: "Princess Bubblegum",
+                       email: "bubbglegum@adventuretime.com",
+                       password: "candy",
+                       role: 0)
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
+  end
 end
