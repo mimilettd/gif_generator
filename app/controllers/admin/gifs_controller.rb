@@ -12,9 +12,16 @@ class Admin::GifsController < Admin::BaseController
     resp = Net::HTTP.get_response(URI.parse(url))
     buffer = resp.body
     result = JSON.parse(buffer)
-    image_path = result["data"]["image_url"]
+    image_path = result["data"]["fixed_height_downsampled_url"]
     category = Category.find_or_create_by(name: search_term)
     @gif = Gif.create(search_term: search_term, image_path: image_path, category_id: category.id)
+    redirect_to gifs_path
+  end
+
+  def destroy
+    gif = Gif.find(params[:id])
+    gif.destroy
+    flash[:gif_destroyed] = "Gif successfully deleted!"
     redirect_to gifs_path
   end
 
