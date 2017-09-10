@@ -1,9 +1,13 @@
-<h1>View all Gifs for <%= @category.name %></h1>
+<h2><%= @category.name.capitalize %></h2>
 
-<% @gifs.each do |gif| %>
-  <div class="gif">
-    <%= image_tag(gif.image_path) %>
-    <%= link_to 'Favorite', user_gifs_path(current_user.id, :gif_id => gif.id), method: :post, class: "favorite-#{gif.id}" if current_user.gifs.include?(gif) == false %>
-    <%= link_to 'Unfavorite', user_gif_path(current_user, gif), method: :delete, class: "unfavorite-#{gif.id}" if current_user.gifs.include?(gif)%>
-  </div>
-<% end %>
+<div class="row">
+  <% @gifs.each do |gif| %>
+    <div class="card border border-white" style="width: 17rem;">
+      <img class="card-img-top" src=<%= gif.image_path %> alt="Card image cap">
+      <div class="card-body">
+        <%= link_to 'Favorite', user_gifs_path(current_user.id, :gif_id => gif.id), method: :post, class: "btn btn-outline-danger btn-lg" if current_user.gifs.include?(gif) == false %>
+        <%= link_to 'Unfavorite', user_gif_path(current_user, gif), method: :delete, class: "btn btn-outline-secondary btn-lg" if current_user.gifs.include?(gif)%>
+      </div>
+    </div>
+  <% end %>
+</div>

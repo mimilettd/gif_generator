@@ -6,15 +6,15 @@
     </div>
     <div class="row">
         <% gifs.each do |gif| %>
-          <div class="card" style="width: 17rem;">
+          <div class="card border border-white" style="width: 17rem;">
             <img class="card-img-top" src=<%= gif.image_path %> alt="Card image cap">
               <div class="card-body">
                 <% if current_user.admin? %>
-                  <%= link_to 'Delete', admin_gif_path(gif), method: :delete, data: {confirm: "Are you sure?"} %>
+                  <%= link_to 'Delete', admin_gif_path(gif), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-outline-danger btn-lg" %>
                 <% elsif current_user.gifs.include?(gif) == false %>
-                  <%= link_to 'Favorite', user_gifs_path(current_user.id, :gif_id => gif.id), method: :post, class: "favorite-#{gif.id}" %>
+                  <%= link_to 'Favorite', user_gifs_path(current_user.id, :gif_id => gif.id), method: :post, class: "btn btn-outline-danger btn-lg" %>
                 <% elsif current_user.gifs.include?(gif) %>
-                  <%= link_to 'Unfavorite', user_gif_path(current_user, gif), method: :delete, class: "unfavorite-#{gif.id}" %>
+                  <%= link_to 'Unfavorite', user_gif_path(current_user, gif), method: :delete, class: "btn btn-outline-secondary btn-lg" %>
                 <% end %>
               </div>
           </div>
