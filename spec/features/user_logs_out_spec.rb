@@ -13,7 +13,7 @@ RSpec.describe "User logs out of current account" do
     fill_in "session[email]", with: "jake@adventuretime.com"
     fill_in "session[password]", with: "dog"
 
-    click_on 'Login'
+    find('.action').first(:button, 'Login').click
 
     click_link 'Logout'
 

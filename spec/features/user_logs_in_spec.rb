@@ -16,7 +16,7 @@ RSpec.describe "Guest logs into existing account" do
       fill_in "session[email]", with: "jake@adventuretime.com"
       fill_in "session[password]", with: "dog"
 
-      click_on 'Login'
+      find('.action').first(:button, 'Login').click
 
       expect(page).to have_content("Welcome, #{User.last.name}!")
     end
@@ -24,7 +24,7 @@ RSpec.describe "Guest logs into existing account" do
       fill_in "session[email]", with: "jake@adventuretime.com"
       fill_in "session[password]", with: "cat"
 
-      click_on 'Login'
+      find('.action').first(:button, 'Login').click
 
       expect(current_path).to eq(login_path)
       expect(page).to have_content("Invalid email/password combination")
@@ -33,7 +33,7 @@ RSpec.describe "Guest logs into existing account" do
       fill_in "session[email]", with: "lumpyspaceprincess@adventuretime.com"
       fill_in "session[password]", with: "dog"
 
-      click_on 'Login'
+      find('.action').first(:button, 'Login').click
 
       expect(current_path).to eq(login_path)
       expect(page).to have_content("Invalid email/password combination")
