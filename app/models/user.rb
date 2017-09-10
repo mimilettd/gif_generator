@@ -14,4 +14,8 @@ class User < ApplicationRecord
   def unfavorite(gif)
     gifs.delete(gif)
   end
+
+  def grouped_gifs
+    gifs.group_by(&:search_term)
+  end
 end

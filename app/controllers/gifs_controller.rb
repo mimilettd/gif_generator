@@ -2,9 +2,9 @@ class GifsController < ApplicationController
   def index
     if params[:user_id]
       @user = User.find(params[:user_id])
-      @gifs = @user.gifs
+      @grouped_gifs = @user.grouped_gifs.sort
     else
-      @gifs = Gif.all
+      @grouped_gifs = Gif.grouped_gifs.sort
     end
   end
 
