@@ -17,7 +17,7 @@ RSpec.feature "User visits gifs#index" do
     visit gifs_path
 
     within ".card-body" do
-      first(:link, "Favorite").click
+      first(:link, "FAVORITE").click
     end
 
     expect(current_path).to eq(user_gifs_path(user))

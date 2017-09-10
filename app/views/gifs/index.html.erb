@@ -8,14 +8,14 @@
     <div class="row">
         <% gifs.each do |gif| %>
           <div class="card border border-white" style="width: 17rem;">
-            <img class="card-img-top" src=<%= gif.image_path %> alt="Card image cap">
+            <img class="card-img-top" src=<%= gif.image_path %> alt="Card image cap" style="height:150px;">
               <div class="card-body">
                 <% if current_user.admin? %>
                   <%= link_to 'Delete', admin_gif_path(gif), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-outline-danger btn-lg" %>
                 <% elsif current_user.gifs.include?(gif) == false %>
-                  <%= link_to 'Favorite', user_gifs_path(current_user.id, :gif_id => gif.id), method: :post, class: "btn btn-outline-danger btn-lg" %>
+                  <%= link_to 'FAVORITE ❤', user_gifs_path(current_user.id, :gif_id => gif.id), method: :post, class: "badge badge-danger" %>
                 <% elsif current_user.gifs.include?(gif) %>
-                  <%= link_to 'Unfavorite', user_gif_path(current_user, gif), method: :delete, class: "btn btn-outline-secondary btn-lg" %>
+                  <%= link_to 'UNFAVORITE', user_gif_path(current_user, gif), method: :delete, class: "badge badge-warning" %>
                 <% end %>
               </div>
           </div>
