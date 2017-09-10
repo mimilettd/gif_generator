@@ -2,7 +2,7 @@ class GifsController < ApplicationController
   def index
     if params[:user_id]
       @user = User.find(params[:user_id])
-      @grouped_gifs = @user.grouped_gifs.sort
+      check_user
     else
       @grouped_gifs = Gif.grouped_gifs.sort
     end
@@ -20,5 +20,15 @@ class GifsController < ApplicationController
     gif = Gif.find(params[:id])
     user.unfavorite(gif)
     redirect_to user_gifs_path(user)
+  end
+
+  private
+
+  def check_user
+    if current_user != @user
+      redirect_to root_path, alert: "You don't have permission to access this page."
+    else
+      @grouped_gifs = @user.grouped_gifs.sort
+    end
   end
 end
