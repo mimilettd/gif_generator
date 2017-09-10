@@ -1,15 +1,23 @@
 <%= flash[:gif_destroyed] %>
 
-<% @grouped_gifs.each do |category, gifs| %>
-  <h2><%= category %></h2>
-  <% gifs.each do |gif| %>
-    <%= image_tag(gif.image_path) %>
-    <% if current_user.admin? %>
-      <%= link_to 'Delete', admin_gif_path(gif), method: :delete, data: {confirm: "Are you sure?"} %>
-    <% elsif current_user.gifs.include?(gif) == false %>
-      <%= link_to 'Favorite', user_gifs_path(current_user.id, :gif_id => gif.id), method: :post, class: "favorite-#{gif.id}" %>
-    <% elsif current_user.gifs.include?(gif) %>
-      <%= link_to 'Unfavorite', user_gif_path(current_user, gif), method: :delete, class: "unfavorite-#{gif.id}" %>
-    <% end %>
+  <% @grouped_gifs.each do |category, gifs| %>
+    <div class="col-3">
+      <h2><%= category %></h2>
+    </div>
+    <div class="row">
+        <% gifs.each do |gif| %>
+          <div class="card" style="width: 17rem;">
+            <img class="card-img-top" src=<%= gif.image_path %> alt="Card image cap">
+              <div class="card-body">
+                <% if current_user.admin? %>
+                  <%= link_to 'Delete', admin_gif_path(gif), method: :delete, data: {confirm: "Are you sure?"} %>
+                <% elsif current_user.gifs.include?(gif) == false %>
+                  <%= link_to 'Favorite', user_gifs_path(current_user.id, :gif_id => gif.id), method: :post, class: "favorite-#{gif.id}" %>
+                <% elsif current_user.gifs.include?(gif) %>
+                  <%= link_to 'Unfavorite', user_gif_path(current_user, gif), method: :delete, class: "unfavorite-#{gif.id}" %>
+                <% end %>
+              </div>
+          </div>
+      <% end %>
+    </div>
   <% end %>
-<% end %>
