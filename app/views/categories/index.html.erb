@@ -1,14 +1,24 @@
 <%= flash[:success] %>
 
-<h2>Categories Index</h2>
-
-<% @categories.each do |category| %>
-  <div class="category">
-    <div class="link">
-      <%= link_to category.name, category_path(category) %>
-    </div>
-    <div class="delete">
-      <%= link_to "Delete", category_path(category), method: :delete if current_user.admin? %>
-    </div>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h2 class="display-6">Categories</h2>
+    <p class="lead">You want to see all the gifs. Not just <strong>all</strong> the gifs. You want to see them sorted by category! Well here you go.</p>
   </div>
-<% end %>
+</div>
+
+<div class="card-group">
+  <div class="col-4">
+  <% @categories.each do |category| %>
+    <div class="card border border-white">
+      <h4><%= link_to category.name, category_path(category) %></h4>
+      <img class="card-img-top" src=<%= category.sample_gif %> alt="Card image cap">
+      <div class="card-body">
+        <div class="card-body">
+          <%= link_to "Delete", category_path(category), method: :delete, class: "btn btn-danger btn-lg" if current_user.admin? %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  </div>
+</div>

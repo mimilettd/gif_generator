@@ -22,7 +22,7 @@ RSpec.feature "User visits gifs#index" do
 
     visit gifs_path
 
-    find(".unfavorite-1").click
+    first(:link, "Unfavorite").click
 
     expect(current_path).to eq(user_gifs_path(user))
     expect(page).to_not have_css("img[src=\"#{gif_1.image_path}\"]")

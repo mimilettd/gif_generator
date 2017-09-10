@@ -13,7 +13,7 @@ RSpec.feature "User visits gifs#new" do
 
       visit '/'
 
-      click_on 'Generate a new GIF'
+      click_on 'Generate a GIF'
 
       expect(current_path).to eq(new_admin_gif_path)
       expect(page).to have_content("Generate Gifs")

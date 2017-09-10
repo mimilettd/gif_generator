@@ -8,10 +8,15 @@
     <%= javascript_include_tag 'application' %>
 
     <link href="https://fonts.googleapis.com/css?family=Bungee+Shade" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
     <style>
     h1 {
         font-family: 'Bungee Shade', cursive;
         font-size: 85px;
+    }
+    h4 {
+        font-family: 'Pacifico', cursive;
+        font-size: 56px;
     }
     .jumbotron {
         text-align: center;
@@ -40,7 +45,7 @@
           </li>
           <% if current_user && current_user.admin? %>
             <li class="nav-item">
-              <a class="nav-link" href="/admin/gifs/new">Generate GIF</a>
+              <a class="nav-link" href="/admin/gifs/new">Generate a GIF</a>
             </li>
             <% elsif current_user %>
               <li class="nav-item">

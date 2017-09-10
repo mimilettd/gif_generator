@@ -1,8 +1,9 @@
 <%= flash[:gif_destroyed] %>
 
+<div class="container-fluid">
   <% @grouped_gifs.each do |category, gifs| %>
     <div class="col-3">
-      <h2><%= category %></h2>
+      <h4><%= category.capitalize %></h4>
     </div>
     <div class="row">
         <% gifs.each do |gif| %>
@@ -21,3 +22,4 @@
       <% end %>
     </div>
   <% end %>
+</div>

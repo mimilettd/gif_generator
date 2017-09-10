@@ -18,7 +18,7 @@ RSpec.feature "User visits main page" do
       click_link 'Favorited Gifs'
 
       expect(current_path).to eq(user_gifs_path(@user))
-      expect("cat").to appear_before("dog")
+      expect("Cat").to appear_before("Dog")
       expect(page).to have_css("img[src=\"#{@gif_5.image_path}\"]")
     end
   end
