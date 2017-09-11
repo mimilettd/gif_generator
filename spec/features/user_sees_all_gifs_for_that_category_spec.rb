@@ -11,7 +11,9 @@ RSpec.describe "User visits a category page" do
   context "clicks on cat" do
     it "and sees all gifs for cat" do
 
-      click_on 'cat'
+      within '.col-4' do
+        click_link("cat", :match => :first)
+      end
 
       expect(current_path).to eq(category_path(@cat))
       expect(page).to have_css("img[src=\"#{@gif_3.image_path}\"]")
@@ -21,7 +23,9 @@ RSpec.describe "User visits a category page" do
   context "clicks on dog" do
     it "and sees all gifs for dog" do
 
-      click_on 'dog'
+      within '.col-4' do
+        click_link("dog", :match => :first)
+      end
 
       expect(current_path).to eq(category_path(@dog))
       expect(page).to have_css("img[src=\"#{@gif_5.image_path}\"]")
