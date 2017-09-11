@@ -13,7 +13,7 @@ class GifsController < ApplicationController
     gif = Gif.find(params["gif_id"])
     user.favorite(gif)
     flash[:success] = "Gif successfully favorited!"
-    redirect_to gifs_index
+    redirect_to gifs_path
   end
 
   def destroy
