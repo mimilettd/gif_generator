@@ -9,10 +9,15 @@
 
     <link href="https://fonts.googleapis.com/css?family=Bungee+Shade" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
     <style>
     h1 {
         font-family: 'Bungee Shade', cursive;
         font-size: 85px;
+    }
+    h3 {
+        font-family: 'Quicksand', sans-serif;
+        font-size: 30px;
     }
     h4 {
         font-family: 'Pacifico', cursive;
@@ -26,7 +31,11 @@
 
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="/"><h1>Gif Generator</h1></a>
+      <% if @current_user.nil? %>
+        <a class="navbar-brand" href="/"><h1>Gif Generator</h1></a>
+      <% else %>
+        <a class="navbar-brand" href="/gifs"><h1>Gif Generator</h1></a>
+      <% end %>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>

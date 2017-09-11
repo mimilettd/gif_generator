@@ -2,8 +2,11 @@
 
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h2 class="display-6">Categories</h2>
-    <p class="lead">You want to see all the gifs. Not just <strong>all</strong> the gifs. You want to see them sorted by category! Well here you go.</p>
+    <h2 class="display-6">We have <%= @categories.count %> categories for you to explore.</h2>
+    <p class="lead">Too lazy to browse? We got your back.</p>
+    <% @categories.each do |category| %>
+      <%= link_to category.name, category_path(category), class: "badge badge-primary" %>
+    <% end %>
   </div>
 </div>
 
