@@ -14,9 +14,8 @@
       <h4><%= link_to category.name, category_path(category) %></h4>
       <img class="card-img-top" src=<%= category.sample_gif %> alt="Card image cap">
       <div class="card-body">
-        <div class="card-body">
-          <%= link_to "Delete", category_path(category), method: :delete, class: "btn btn-danger btn-lg" if current_user.admin? %>
-        </div>
+        <span class="badge badge-danger"><%= category.gifs.count %> GIFS</span>
+        <%= link_to "DELETE CATEGORY", category_path(category), method: :delete, class: "badge badge-warning" if current_user.admin? %>
       </div>
     </div>
   <% end %>

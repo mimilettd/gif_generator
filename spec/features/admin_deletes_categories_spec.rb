@@ -19,7 +19,7 @@ RSpec.describe "Only admins can delete categories" do
 
       visit categories_path
 
-      first('.card-body').click_link('Delete')
+      first('.card-body').click_link('DELETE')
 
       expect(page).to_not have_content("animals")
       expect(current_path).to eq(categories_path)
