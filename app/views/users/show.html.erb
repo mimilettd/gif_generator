@@ -10,7 +10,7 @@
     <% if @user.gifs.empty? %>
       <p class="lead">Let's change that. <%= link_to 'Click here', gifs_path %> to view all our gifs.</p>
     <% else %>
-      <p class="lead">It looks like you really like <%= @user.favorite_category.name %> gifs. Here's a cat gif to brighten your day...</p>
+      <p class="lead">It looks like you really like <%= @user.favorite_category.name %> gifs. Here's a <%= @user.favorite_category.name %> gif to brighten your day...</p>
       <%= image_tag(Gif.surprise_gif(@user.favorite_category).image_path) %>
     <% end %>
   </div>

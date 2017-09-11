@@ -12,6 +12,7 @@ class Admin::GifsController < Admin::BaseController
     resp = Net::HTTP.get_response(URI.parse(url))
     buffer = resp.body
     result = JSON.parse(buffer)
+    binding.pry
     image_path = result["data"]["fixed_height_downsampled_url"]
     category = Category.find_or_create_by(name: search_term)
     @gif = Gif.create(search_term: search_term, image_path: image_path, category_id: category.id)
