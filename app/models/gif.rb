@@ -7,4 +7,8 @@ class Gif < ApplicationRecord
   def self.grouped_gifs
     self.all.group_by(&:search_term)
   end
+
+  def self.surprise_gif(category_id)
+    self.find_by(category_id: category_id)
+  end
 end

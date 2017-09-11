@@ -11,7 +11,7 @@
             <img class="card-img-top" src=<%= gif.image_path %> alt="Card image cap" style="height:150px;">
               <div class="card-body">
                 <% if current_user.admin? %>
-                  <%= link_to 'Delete', admin_gif_path(gif), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-outline-danger btn-lg" %>
+                  <%= link_to 'DELETE', admin_gif_path(gif), method: :delete, data: {confirm: "Are you sure?"}, class: "badge badge-danger" %>
                 <% elsif current_user.gifs.include?(gif) == false %>
                   <%= link_to 'FAVORITE ❤', user_gifs_path(current_user.id, :gif_id => gif.id), method: :post, class: "badge badge-danger" %>
                 <% elsif current_user.gifs.include?(gif) %>

@@ -18,7 +18,7 @@ RSpec.describe "Guest logs into existing account" do
 
       find('.action').first(:button, 'Login').click
 
-      expect(page).to have_content("Welcome, #{User.last.name}!")
+      expect(page).to have_content("Hi, #{User.last.name}")
     end
     it "and inputs incorrect password" do
       fill_in "session[email]", with: "jake@adventuretime.com"

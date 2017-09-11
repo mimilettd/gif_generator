@@ -19,4 +19,9 @@ class User < ApplicationRecord
     gifs.group_by(&:search_term)
   end
 
+  def favorite_category
+    category_id = gifs.group(:category_id).count.sort.to_h.keys[0]
+    Category.find(category_id)
+  end
+
 end

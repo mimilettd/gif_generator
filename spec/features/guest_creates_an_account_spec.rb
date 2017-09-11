@@ -16,7 +16,7 @@ RSpec.describe "Guest creates a new account" do
 
       expect(current_path).to eq(user_path(User.last))
       expect(page).to have_content("Account successfully created!")
-      expect(page).to have_content("Welcome, #{User.last.name}!")
+      expect(page).to have_content("Hi, #{User.last.name}.")
     end
     it "and does not provide name" do
       fill_in "user[email]", with: "jake@adventuretime.com"

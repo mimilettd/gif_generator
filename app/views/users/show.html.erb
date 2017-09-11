@@ -1,3 +1,17 @@
 <%= flash[:success] %>
 
-<p>Welcome, <%= current_user.name %>!</p>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h2 class="display-6">Hi, <%= current_user.name %>.</h1>
+    <p class="lead">You've favorited <%= @user.gifs.count %> gifs.
+      <% if @user.gifs.count > 0 %>
+        <i>Whoo!</i>
+      <% end %></p>
+    <% if @user.gifs.empty? %>
+      <p class="lead">Let's change that. <%= link_to 'Click here', gifs_path %> to view all our gifs.</p>
+    <% else %>
+      <p class="lead">It looks like you really like <%= @user.favorite_category.name %> gifs. Here's a cat gif to brighten your day...</p>
+      <%= image_tag(Gif.surprise_gif(@user.favorite_category).image_path) %>
+    <% end %>
+  </div>
+</div>
