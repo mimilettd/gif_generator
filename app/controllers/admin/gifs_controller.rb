@@ -8,7 +8,7 @@ class Admin::GifsController < Admin::BaseController
 
   def create
     search_term = gif_params[:search_term]
-    url = "http://api.giphy.com/v1/gifs/random?tag=#{search_term}&api_key=059e59d366d2411e94374ac6bbf0f75f&limit=5"
+    url = "http://api.giphy.com/v1/gifs/random?tag=#{search_term}&api_key=APIKEY&limit=5"
     resp = Net::HTTP.get_response(URI.parse(url))
     buffer = resp.body
     result = JSON.parse(buffer)
